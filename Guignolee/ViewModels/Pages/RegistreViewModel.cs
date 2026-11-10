@@ -69,8 +69,19 @@ namespace Guignolee.ViewModels.Pages
         /// </summary>
         public void ChargerDonnees()
         {
-            // TODO: À compléter selon la documentation de la méthode.
+            List<Don> don = _donDataProvider.GetDons();
 
+            //Don? nonRemis = donsRaw.Where(d => !d.EstRemis).FirstOrDefault();
+
+            //Don? donsPerris = donsRaw.Where(d => d.EstPerissable).OrderBy(d => d.DateReception).FirstOrDefault();
+            //Don? donsNonPerris = donsRaw.Where(d => !d.EstRemis).OrderBy(d => d.DateReception).FirstOrDefault();
+
+
+
+            Don? Dons = don.Where(d => !d.EstRemis).OrderBy(d => d.EstPerissable).OrderBy(d => d.DateReception).ThenBy(d => d.DateReception).FirstOrDefault();
+
+
+            
             DonSelectionne = null;
         }
 
@@ -78,11 +89,14 @@ namespace Guignolee.ViewModels.Pages
         /// Permet d'ajouter le nouveau don du formulaire à la liste des dons à remettre. 
         /// Le don est ajouté au fournisseur de données et la liste des dons est rechargée.
         /// </summary>
-        public void AjouterDon()
+        public bool AjouterDon()
         {
+   
             _donDataProvider.AjouterDon(new Don(NouveauDon.Donateur, NouveauDon.Contenu, NouveauDon.Quantite, NouveauDon.EstPerissable));
+            Dons.Add(_nouveauDon);
             ChargerDonnees();
             NouveauDon = new DonViewModel(new Don());
+            return true;
         }
     }
 }

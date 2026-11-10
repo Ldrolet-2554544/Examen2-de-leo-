@@ -1,19 +1,27 @@
 ﻿using Guignolee.Models;
 using System;
+using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace Guignolee.ViewModels
 {
-    public class DonViewModel
+    public class DonViewModel : ValidableViewModel
     {
         private readonly Don _don;
 
         public DonViewModel(Don don)
         {
             _don = don;
+            _errors.Add("Nom", new ObservableCollection<ValidationResult>());
         }
 
         public int Id => _don.Id;
 
+
+        [Required(ErrorMessage = "Le nom du donateur est requis")]
+        [MinLength(2, ErrorMessage = "Le nom du donateur est trop petit")]
+        [MaxLength(50, ErrorMessage = "Le titre de la tâche doit comprendre moins de 50 caractères.")]
+        [RegularExpression(@".{2,50}", ErrorMessage ="Le donnateur n'est pas valide")]
         public string Donateur
         {
             get { return _don.Donateur; }
@@ -25,7 +33,10 @@ namespace Guignolee.ViewModels
                 }
             }
         }
-
+        [Required(ErrorMessage = "Le nom du contenu est requis")]
+        [MinLength(2, ErrorMessage = "Le contenu est trop petit")]
+        [MaxLength(50, ErrorMessage = "Le contenu doit comprendre moins de 50 caractères.")]
+        [RegularExpression(@".{2,50}", ErrorMessage = "Le contenu n'est pas valide")]
         public string Contenu
         {
             get { return _don.Contenu; }
@@ -37,7 +48,8 @@ namespace Guignolee.ViewModels
                 }
             }
         }
-
+        [Required(ErrorMessage = "La quantité est requise")]
+        [RegularExpression(@"\d{1,100}", ErrorMessage = "La quantité n'est pas dans l'intervalle 1 à 100")]
         public int Quantite
         {
             get { return _don.Quantite; }
@@ -50,7 +62,6 @@ namespace Guignolee.ViewModels
                 }
             }
         }
-
         public bool EstPerissable
         {
             get { return _don.EstPerissable; }
