@@ -30,6 +30,7 @@ namespace Guignolee.ViewModels
                 if (_don.Donateur != value)
                 {
                     _don.Donateur = value;
+                    RaisePropertyChanged();
                 }
             }
         }
@@ -45,6 +46,7 @@ namespace Guignolee.ViewModels
                 if (_don.Contenu != value )
                 {
                     _don.Contenu = value;
+                    RaisePropertyChanged();
                 }
             }
         }
@@ -58,6 +60,7 @@ namespace Guignolee.ViewModels
                 if (Quantite != value)
                 {
                     _don.Quantite = value;
+                    RaisePropertyChanged();    
 
                 }
             }
@@ -70,6 +73,7 @@ namespace Guignolee.ViewModels
                 if (_don.EstPerissable != value)
                 {
                     _don.EstPerissable = value;
+                    RaisePropertyChanged();
                 }
             }
         }
@@ -82,6 +86,7 @@ namespace Guignolee.ViewModels
                 if (_don.EstRemis != value)
                 {
                     _don.EstRemis = value;
+                    RaisePropertyChanged();
                 }
             }
         }

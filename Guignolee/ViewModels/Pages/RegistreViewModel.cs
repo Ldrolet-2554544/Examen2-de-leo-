@@ -98,5 +98,11 @@ namespace Guignolee.ViewModels.Pages
             NouveauDon = new DonViewModel(new Don());
             return true;
         }
+
+        public bool MarquerRemis()
+        {
+            DonSelectionne.EstRemis = true;
+            return true;
+        }
     }
 }

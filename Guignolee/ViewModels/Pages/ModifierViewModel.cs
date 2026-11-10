@@ -1,4 +1,6 @@
-﻿namespace Guignolee.ViewModels.Pages
+﻿using Microsoft.UI.Xaml.Controls;
+
+namespace Guignolee.ViewModels.Pages
 {
     public class ModifierDonViewModel : BaseViewModel
     {
@@ -18,7 +20,13 @@
 
         public ModifierDonViewModel(DonViewModel donViewModel)
         {
-            DonEdit = donViewModel;
+            ContentDialog dialog = new ContentDialog()
+            {
+                Title = "Modification",
+                Content = "",
+                CloseButtonText = "OK",
+                
+            };
         }
 
     }
