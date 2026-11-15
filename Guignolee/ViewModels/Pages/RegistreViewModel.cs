@@ -77,12 +77,18 @@ namespace Guignolee.ViewModels.Pages
             //Don? donsNonPerris = donsRaw.Where(d => !d.EstRemis).OrderBy(d => d.DateReception).FirstOrDefault();
 
 
-
+            // TODO: Tu y étais presque.
+            //  Attention tu écrases la collection observale Dons, renomme autrement.
+            //  Aussi, c'est List<Don> et non pas Don et retire .FirstOrDefault() et mets ToList() à la place
+            //  Voir exercice et réponses ici : https://projets420.gitbook.io/asp.net/420-3p3-dev.-applications-windows/c/les-expression-lambda#exercice-methodes-linq-et-expression-lambda
+            //  Après celà, tu vas créer une boucle et faire Dons.Add()
+            //  Ou alors, tu ajoutes tout à Dons d'un coup puis tu filtre et tries Dons
             Don? Dons = don.Where(d => !d.EstRemis).OrderBy(d => d.EstPerissable).OrderBy(d => d.DateReception).ThenBy(d => d.DateReception).FirstOrDefault();
-
-
             
             DonSelectionne = null;
+
+            // TODO: Question 1 : RaisePropertyChanged pour notifier que la propriété EtatDons a changé.
+
         }
 
         /// <summary>
@@ -101,8 +107,16 @@ namespace Guignolee.ViewModels.Pages
 
         public bool MarquerRemis()
         {
+            // TODO: Modifier aussi le dataprovider
+
             DonSelectionne.EstRemis = true;
             return true;
+
+            // TODO: Recharger les données
+
+            // TODO: Qu'est-ce qui s'est passé Léo ?
+            //          Je pense que c'est une question de gestion du temps.
+            //          Mais si c'est la matière qui n'est pas claire pour toi n'hésites pas à passer me voir.
         }
     }
 }

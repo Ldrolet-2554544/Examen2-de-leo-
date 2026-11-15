@@ -137,26 +137,24 @@
 
                         <StackPanel Grid.Column="0">
                             <TextBox
-                                Text="{x:Bind ViewModel.NouveauDon.Donateur, Mode=TwoWay}"
                                 Header="Donateur"
                                 PlaceholderText="Prénom Nom"
-                                />
+                                Text="{x:Bind ViewModel.NouveauDon.Donateur, Mode=TwoWay}" />
                         </StackPanel>
 
                         <StackPanel Grid.Column="1">
                             <TextBox
-                                Text="{x:Bind ViewModel.NouveauDon.Contenu, Mode=TwoWay}"
                                 Header="Contenu du don"
                                 PlaceholderText="Ex. : Conserves de soupe"
-                                />
+                                Text="{x:Bind ViewModel.NouveauDon.Contenu, Mode=TwoWay}" />
                         </StackPanel>
 
                         <StackPanel Grid.Column="2">
                             <TextBox
-                                Text="{x:Bind ViewModel.NouveauDon.Quantite, Mode=TwoWay}"
                                 Header="Quantité"
                                 MaxLength="3"
-                                PlaceholderText="Ex. : 24"/>
+                                PlaceholderText="Ex. : 24"
+                                Text="{x:Bind ViewModel.NouveauDon.Quantite, Mode=TwoWay}" />
                         </StackPanel>
 
                         <CheckBox

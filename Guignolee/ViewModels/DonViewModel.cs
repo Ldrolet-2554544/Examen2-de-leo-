@@ -27,6 +27,8 @@ namespace Guignolee.ViewModels
             get { return _don.Donateur; }
             set
             {
+                // TODO: appliquer la validation sinon rien ne se passe
+                //          && Validate(value) 
                 if (_don.Donateur != value)
                 {
                     _don.Donateur = value;
